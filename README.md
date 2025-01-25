@@ -73,9 +73,9 @@ Built with support for:
 - libdovi
 ```
 
-`Ubuntu 22.04`
-`Docker version 27.3.1, build ce12230`
-`NVIDIA UNIX x86_64 Kernel Module  565.57.01`
+- `Ubuntu 22.04`
+- `Docker version 27.3.1, build ce12230`
+- `NVIDIA UNIX x86_64 Kernel Module  565.57.01`
 
 ```sh
 $ cat /proc/driver/nvidia/version
