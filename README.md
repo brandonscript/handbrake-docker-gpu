@@ -1,10 +1,7 @@
 # HandBrake, Dockerized with NVEnc, Dolby Vision, and Intel QuickSync – in the browser.
 A Docker container compiled for NVEnc for NVIDIA GPUs, libdovi (for Dolby Vision transcodes), and Intel QuickSync – that runs in the browser. This build also resolves several GTK3 bugs which cause the UI to hang/freeze. Based on [zocker160/handbrake-nvenc:18x](https://github.com/zocker-160/handbrake-nvenc-docker).
 
-<img src="https://handbrake.fr/docs/assets/images/icon@2x.png" width="100" alt="HandBrake logo" /> ![+](https://github.com/user-attachments/assets/18cea26f-88b2-4ea0-8182-d6558ea1ca58)
- <img src="https://github.com/user-attachments/assets/c195e982-74b3-4776-bfcb-7eae0ee0d8c3" width="100" alt="Docker logo" /> ![+](https://github.com/user-attachments/assets/18cea26f-88b2-4ea0-8182-d6558ea1ca58)
- <img src="https://github.com/user-attachments/assets/24df7c9a-e1ca-45b9-a57f-d2e615978669" width="100" alt="NVIDIA logo" /> ![+](https://github.com/user-attachments/assets/18cea26f-88b2-4ea0-8182-d6558ea1ca58)
- <img src="https://github.com/user-attachments/assets/ad96071b-007e-4f32-93ce-0fa4e20bf15c" height="100" alt="Dolby Vision logo" />
+<img src="https://github.com/user-attachments/assets/c5ae296b-28ea-4112-8d7b-48694c0f72de" width="492" alt="HandBrake, Docker, NVIDIA, and Dolby Vision logos" />
 
 ## Requirements
 
@@ -57,6 +54,7 @@ A Docker container compiled for NVEnc for NVIDIA GPUs, libdovi (for Dolby Vision
 ### Configuration
 
 7. Configuration options are documented in the [upstream zocker-160 repo](https://github.com/zocker-160/handbrake-nvenc-docker).
+8. If you're using docker compose, you'll want to edit some of the env vars and volume mappings to expose them to your container.
 
 ## Changelog
 
@@ -75,9 +73,9 @@ Built with support for:
 - libdovi
 ```
 
-Ubuntu 22.04
-Docker version 27.3.1, build ce12230
-NVIDIA UNIX x86_64 Kernel Module  565.57.01
+`Ubuntu 22.04`
+`Docker version 27.3.1, build ce12230`
+`NVIDIA UNIX x86_64 Kernel Module  565.57.01`
 
 ```sh
 $ cat /proc/driver/nvidia/version
