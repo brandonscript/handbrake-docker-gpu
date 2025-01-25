@@ -1,7 +1,9 @@
-# handbrake-docker-gpu
+# HandBrake, Dockerized with NVEnc, Dolby Vision, and Intel QuickSync – in the browser.
 A Docker container compiled for NVEnc for NVIDIA GPUs, libdovi (for Dolby Vision transcodes), and Intel QuickSync – that runs in the browser. This build also resolves several GTK3 bugs which cause the UI to hang/freeze. Based on [zocker160/handbrake-nvenc:18x](https://github.com/zocker-160/handbrake-nvenc-docker).
 
-<img src="https://github.com/user-attachments/assets/8a05f3f6-d1d4-4b61-bd82-d5a223e87116" width="400" />
+<img src="https://handbrake.fr/docs/assets/images/icon@2x.png" width="100" alt="HandBrake logo" /> ![+](https://github.com/user-attachments/assets/18cea26f-88b2-4ea0-8182-d6558ea1ca58)
+ <img src="https://github.com/user-attachments/assets/c195e982-74b3-4776-bfcb-7eae0ee0d8c3" width="100" alt="Docker logo" />
+
 
 ## Requirements
 
@@ -36,7 +38,7 @@ A Docker container compiled for NVEnc for NVIDIA GPUs, libdovi (for Dolby Vision
 
 3. Run a test container `sudo docker run --rm --gpus all nvidia/cuda:12.6.3-base-ubuntu24.04 nvidia-smi` – you should see the `nvidia-smi` output similar to the output shown in the changelog below.
 
-### Build andrun the Handbrake container
+### Build and run the HandBrake container
 
 4. Clone this repo or download an archive, and extract to a location of your choice.
 5. Using `docker compose` (easy), simply:
@@ -57,7 +59,7 @@ A Docker container compiled for NVEnc for NVIDIA GPUs, libdovi (for Dolby Vision
 
 ## Changelog
 
-### Handbrake 1.9.0
+### HandBrake 1.9.0
 
 ```
 Runtime environment: Native
@@ -69,6 +71,7 @@ Built with support for:
 - Intel QuickSync
 - Nvidia NVEnc
 - x265
+- libdovi
 ```
 
 Ubuntu 22.04
