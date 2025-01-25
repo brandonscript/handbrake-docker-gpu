@@ -22,6 +22,18 @@ A Docker container compiled for NVEnc for NVIDIA GPUs, libdovi (for Dolby Vision
 
 1. Install the [NVIDIA container toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installing-with-apt)
 2. Configure it for [Docker](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#configuring-docker) or [Podman](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#configuring-podman) (in Docker-compatible mode)
+  You should have the following in your `/etc/docker/daemon.json`:
+  ```json
+  {
+      "runtimes": {
+          "nvidia": {
+              "args": [],
+              "path": "nvidia-container-runtime"
+          }
+      }
+  }
+  ```
+
 3. Run a test container `sudo docker run --rm --gpus all nvidia/cuda:12.6.3-base-ubuntu24.04 nvidia-smi` – you should see the `nvidia-smi` output similar to the output shown in the changelog below.
 
 ### Build andrun the Handbrake container
