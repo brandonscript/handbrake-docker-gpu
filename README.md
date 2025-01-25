@@ -2,8 +2,9 @@
 A Docker container compiled for NVEnc for NVIDIA GPUs, libdovi (for Dolby Vision transcodes), and Intel QuickSync – that runs in the browser. This build also resolves several GTK3 bugs which cause the UI to hang/freeze. Based on [zocker160/handbrake-nvenc:18x](https://github.com/zocker-160/handbrake-nvenc-docker).
 
 <img src="https://handbrake.fr/docs/assets/images/icon@2x.png" width="100" alt="HandBrake logo" /> ![+](https://github.com/user-attachments/assets/18cea26f-88b2-4ea0-8182-d6558ea1ca58)
- <img src="https://github.com/user-attachments/assets/c195e982-74b3-4776-bfcb-7eae0ee0d8c3" width="100" alt="Docker logo" />
-
+ <img src="https://github.com/user-attachments/assets/c195e982-74b3-4776-bfcb-7eae0ee0d8c3" width="100" alt="Docker logo" /> ![+](https://github.com/user-attachments/assets/18cea26f-88b2-4ea0-8182-d6558ea1ca58)
+ <img src="https://github.com/user-attachments/assets/24df7c9a-e1ca-45b9-a57f-d2e615978669" width="100" alt="NVIDIA logo" /> ![+](https://github.com/user-attachments/assets/18cea26f-88b2-4ea0-8182-d6558ea1ca58)
+ <img src="https://github.com/user-attachments/assets/ad96071b-007e-4f32-93ce-0fa4e20bf15c" height="100" alt="Dolby Vision logo" />
 
 ## Requirements
 
