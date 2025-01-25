@@ -1,0 +1,80 @@
+name: handbrake
+
+services:
+  builder:
+    container_name: handbrake-builder
+    image: phantom/handbrake/builder:latest
+    build:
+      context: .
+      dockerfile: handbrake-builder.Dockerfile
+    volumes:
+      - builder-artifacts:/build
+    deploy:
+      replicas: 0 # No need to run builder as a container
+
+  handbrake:
+    container_name: handbrake
+    image: phantom/handbrake:latest
+    build:
+      context: .
+      dockerfile: handbrake-runtime.Dockerfile
+      args:
+        TAG: 1.9.0 # You can change your version here, but this release has only been tested with 1.9.0
+    depends_on:
+      - builder
+    runtime: nvidia # Important to configure this to use the nvidia runtime in /etc/docker/daemon.json – see README.md.
+    restart: unless-stopped
+    environment:
+      - USER_ID=1000
+      - GROUP_ID=1000
+      - PGID=1000
+      - PUID=1000
+      - UMASK=002
+      - TERM=xterm
+      - LANG=en_US.UTF-8
+      - LC_ALL=C.UTF-8
+      - TZ=America/Vancouver # You may want to set your own timezone here
+      - DARK_MODE=1
+      - APP_NICENESS=10
+      - HANDBRAKE_DEBUG=0
+      - CONTAINER_DEBUG=0
+      # Your display configuration may vary – run `echo $DISPLAY` on your host to 
+      # determine the correct value for you, or try omitting this env var.
+      - DISPLAY=:20.0
+      - DISPLAY_WIDTH=1440
+      - DISPLAY_HEIGHT=1024
+      # - SECURE_CONNECTION=1
+      # - WEB_AUTHENTICATION=1
+      # - WEB_AUTHENTICATION_USERNAME=handbrake
+      # - WEB_AUTHENTICATION_PASSWORD=<supersecurepassword>
+      # - VNC_PASSWORD=<supersecurepassword>
+      - GTK_THEME=Adwaita-dark:dark
+
+    healthcheck:
+      test: ["CMD", "nvidia-smi"]
+      interval: 2s
+      timeout: 5s
+      retries: 3
+
+    ports:
+      - "5800:5800"
+      - "5908:5900"
+    volumes:
+      - builder-artifacts:/build
+      - /etc/docker/handbrake/config:/config # Change this path to wherever you want to expose your persistent config store on the host.
+      # - /path/to/host/converted/files/dir:/media # Change this path to your preferred host/container media location(s).
+      - $HOME/.Xauthority:/root/.Xauthority:rw
+      - $HOME/.Xauthority:/homes/app/.Xauthority:rw
+    deploy:
+      resources:
+        limits:
+          # memory: 6144M # Optionally limit memory/CPU here.
+    cpu_shares:
+      # 1024 # Optionally limit CPU here - handbrake can be a bit of a hog, even with hw encoding.
+
+      # Uncomment this if you want exclusive GPU reservations for this container.
+      # reservations:
+      #   devices:
+      #     - driver: nvidia
+      #       count: 4
+      #       capabilities: [gpu]
